@@ -8,7 +8,9 @@ import {
   ArrowRight, 
   Sparkles,
   Layers,
-  Clock
+  Clock,
+  CreditCard,
+  StickyNote
 } from "lucide-react";
 import "../styles/Dashboard.css";
 
@@ -52,6 +54,28 @@ export default function Dashboard() {
       description: "View department colleagues, check assigned roles, access contact details, and collaborate across teams effortlessly."
     }
   ];
+
+  const isAdmin = user?.role?.toLowerCase() === "admin";
+  if (isAdmin) {
+    NAV_CARDS.push(
+      {
+        to: "/payment",
+        icon: CreditCard,
+        color: "blue",
+        badge: "Admin Finance",
+        title: "Go to Payment",
+        description: "Review and update live salary registers, invoices, and billing schedules in Google Docs."
+      },
+      {
+        to: "/notes",
+        icon: StickyNote,
+        color: "purple",
+        badge: "Admin Knowledge",
+        title: "Go to Notes",
+        description: "Access internal documentation, sprint briefs, and operational knowledge base via Google Docs."
+      }
+    );
+  }
 
   return (
     <div className="dashboard-container">

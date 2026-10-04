@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { 
-  CreditCard, 
+  StickyNote, 
   ExternalLink, 
   Copy, 
   Check, 
@@ -8,18 +8,18 @@ import {
   FileText, 
   Lock, 
   ArrowLeft,
-  Sparkles,
   RefreshCw,
   Eye,
-  EyeOff
+  EyeOff,
+  Sparkles
 } from "lucide-react";
 import { Link } from "react-router-dom";
-import "../styles/Payment.css";
+import "../styles/Payment.css"; // Uses the shared responsive docs styling
 
-const DOCS_URL = "https://docs.google.com/document/d/1AAt3WDQqtrhyamSJGj-VvKS0UPa3z3N5DF3G6RLmc_Y/edit?usp=sharing";
-const EMBED_URL = "https://docs.google.com/document/d/1AAt3WDQqtrhyamSJGj-VvKS0UPa3z3N5DF3G6RLmc_Y/preview";
+const DOCS_URL = "https://docs.google.com/document/d/1IdCr9Yn-EOljercs7N8O5HTqFbkrUMj3Mu9xn-5MzTw/edit?usp=sharing";
+const EMBED_URL = "https://docs.google.com/document/d/1IdCr9Yn-EOljercs7N8O5HTqFbkrUMj3Mu9xn-5MzTw/preview";
 
-export default function Payment() {
+export default function Notes() {
   const [copied, setCopied] = useState(false);
   const [iframeKey, setIframeKey] = useState(0);
   const [showPreview, setShowPreview] = useState(true);
@@ -38,7 +38,7 @@ export default function Payment() {
     setIframeKey((prev) => prev + 1);
   };
 
-  // If not admin, show access denied card
+  // If not admin, show access restricted prompt
   if (!isAdmin) {
     return (
       <div className="payment-restricted-container">
@@ -48,7 +48,7 @@ export default function Payment() {
           </div>
           <h2>Restricted Access</h2>
           <p>
-            The Payment section is strictly reserved for administrators. You do not have permission to view or manage payment documentation.
+            The Notes section is strictly reserved for administrators. You do not have permission to view or edit this documentation.
           </p>
           <Link to="/" className="btn-restricted-home">
             <ArrowLeft size={16} />
@@ -66,11 +66,11 @@ export default function Payment() {
         <div className="payment-header-left">
           <div className="payment-badge">
             <ShieldCheck size={14} />
-            <span>Admin Confidential</span>
+            <span>Admin Knowledge Base</span>
           </div>
-          <h1 className="payment-title">Payment Documentation</h1>
+          <h1 className="payment-title">Workspace Notes & Docs</h1>
           <p className="payment-subtitle">
-            Centralized Google Docs repository for financial tracking, salary disbursements, and invoice logs.
+            Centralized Google Docs repository for sprint notes, operational playbooks, client requirements, and team guidelines.
           </p>
         </div>
 
@@ -90,13 +90,13 @@ export default function Payment() {
       {/* Info & Document Details Card */}
       <div className="payment-details-card">
         <div className="details-header-row">
-          <div className="details-icon-wrapper">
-            <CreditCard size={22} />
+          <div className="details-icon-wrapper note-icon-color">
+            <StickyNote size={22} />
           </div>
           <div className="details-text-group">
-            <h3 className="details-card-title">ALOO SMP Payment & Accounts Ledger</h3>
+            <h3 className="details-card-title">ALOO SMP Central Notes Ledger</h3>
             <p className="details-card-desc">
-              All payment records, invoice history, and compensation adjustments are documented in real time inside this Google Doc. As an administrator, you have full edit permissions.
+              All collaborative documentation, feature specifications, and team briefings are maintained live inside this Google Doc. Admins have complete editing and commenting privileges.
             </p>
           </div>
         </div>
@@ -182,7 +182,7 @@ export default function Payment() {
             <iframe
               key={iframeKey}
               src={EMBED_URL}
-              title="Google Docs Payment Documentation"
+              title="Google Docs Notes Documentation"
               className="payment-docs-iframe"
               allow="autoplay"
               loading="lazy"

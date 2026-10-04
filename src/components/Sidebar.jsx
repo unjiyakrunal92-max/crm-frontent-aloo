@@ -1,6 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { LayoutDashboard, CheckSquare, Users, CalendarDays, CalendarCheck, Settings, Plus, X, CreditCard } from "lucide-react";
+import { LayoutDashboard, CheckSquare, Users, CalendarDays, CalendarCheck, Settings, Plus, X, CreditCard, StickyNote } from "lucide-react";
 import "./Sidebar.css";
 
 export default function Sidebar({ onOpenNewTask, isOpen, onClose }) {
@@ -43,12 +43,20 @@ export default function Sidebar({ onOpenNewTask, isOpen, onClose }) {
               <li><NavLink to="/team" onClick={onClose} className={({ isActive }) => `nav-item ${isActive ? "active" : ""}`}><Users size={18} />Team</NavLink></li>
               <li><NavLink to="/holidays" onClick={onClose} className={({ isActive }) => `nav-item ${isActive ? "active" : ""}`}><CalendarDays size={18} />Holidays</NavLink></li>
               {isAdmin && (
-                <li>
-                  <NavLink to="/payment" onClick={onClose} className={({ isActive }) => `nav-item ${isActive ? "active" : ""}`}>
-                    <CreditCard size={18} />
-                    Payment
-                  </NavLink>
-                </li>
+                <>
+                  <li>
+                    <NavLink to="/payment" onClick={onClose} className={({ isActive }) => `nav-item ${isActive ? "active" : ""}`}>
+                      <CreditCard size={18} />
+                      Payment
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink to="/notes" onClick={onClose} className={({ isActive }) => `nav-item ${isActive ? "active" : ""}`}>
+                      <StickyNote size={18} />
+                      Notes
+                    </NavLink>
+                  </li>
+                </>
               )}
               <li><NavLink to="/settings" onClick={onClose} className={({ isActive }) => `nav-item ${isActive ? "active" : ""}`}><Settings size={18} />Settings</NavLink></li>
             </ul>
