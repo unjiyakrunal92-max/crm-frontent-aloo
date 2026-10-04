@@ -1,0 +1,341 @@
+/* ==========================================================================
+   PAYMENT VIEW STYLES - ALOO SMP TASK MANAGER (Admin Only)
+   ========================================================================== */
+
+.payment-page-container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  animation: fadeIn 200ms ease-out;
+}
+
+/* Page Header */
+.payment-header-section {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.payment-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(0, 113, 227, 0.1);
+  color: var(--accent-blue);
+  font-size: 12px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: var(--radius-badge);
+  margin-bottom: 8px;
+}
+
+.payment-title {
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.5px;
+  margin-bottom: 6px;
+}
+
+.payment-subtitle {
+  font-size: 14px;
+  color: var(--text-secondary);
+  max-width: 620px;
+  line-height: 1.5;
+}
+
+.btn-open-docs-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--accent-blue);
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 10px 18px;
+  border-radius: var(--radius-button);
+  box-shadow: 0 2px 8px rgba(0, 113, 227, 0.25);
+  transition: all 180ms ease;
+}
+
+.btn-open-docs-primary:hover {
+  background: #0077ed;
+  box-shadow: 0 4px 14px rgba(0, 113, 227, 0.35);
+  transform: translateY(-1px);
+}
+
+/* Details Card */
+.payment-details-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  padding: 24px;
+  box-shadow: var(--shadow-card);
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.details-header-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.details-icon-wrapper {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: rgba(0, 113, 227, 0.08);
+  color: var(--accent-blue);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.details-card-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+}
+
+.details-card-desc {
+  font-size: 13.5px;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+/* Link Bar */
+.docs-link-bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(0, 0, 0, 0.03);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 8px 12px;
+  flex-wrap: wrap;
+}
+
+.docs-url-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  flex-shrink: 0;
+}
+
+.docs-url-display {
+  flex: 1;
+  font-size: 13px;
+  font-family: monospace;
+  color: var(--accent-blue);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-width: 200px;
+}
+
+.btn-copy-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #ffffff;
+  border: 1px solid var(--border);
+  color: var(--text-primary);
+  font-size: 12px;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 150ms ease;
+}
+
+.btn-copy-link:hover {
+  background: rgba(0, 0, 0, 0.04);
+}
+
+.btn-copy-link.copied {
+  background: rgba(52, 199, 89, 0.12);
+  color: #1e7e34;
+  border-color: rgba(52, 199, 89, 0.3);
+}
+
+/* Embedded Frame Card */
+.payment-embed-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.embed-card-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 18px;
+  background: rgba(0, 0, 0, 0.02);
+  border-bottom: 1px solid var(--border);
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.embed-toolbar-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.embed-live-indicator {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #34c759;
+  box-shadow: 0 0 0 3px rgba(52, 199, 89, 0.2);
+}
+
+.embed-toolbar-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.embed-toolbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.btn-toolbar-refresh,
+.btn-toolbar-external {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #ffffff;
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+  font-size: 12px;
+  font-weight: 500;
+  padding: 6px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 150ms ease;
+}
+
+.btn-toolbar-refresh:hover,
+.btn-toolbar-external:hover {
+  color: var(--text-primary);
+  border-color: rgba(0, 0, 0, 0.15);
+}
+
+.embed-frame-wrapper {
+  position: relative;
+  width: 100%;
+  height: 720px;
+  background: #fdfdfd;
+}
+
+.payment-docs-iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* Restricted Card */
+.payment-restricted-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 450px;
+}
+
+.payment-restricted-card {
+  max-width: 420px;
+  text-align: center;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  padding: 36px 28px;
+  box-shadow: var(--shadow-card);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+
+.restricted-icon-box {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: rgba(255, 59, 48, 0.1);
+  color: var(--accent-red);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.payment-restricted-card h2 {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.payment-restricted-card p {
+  font-size: 13.5px;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.btn-restricted-home {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--accent-blue);
+  color: #ffffff;
+  padding: 10px 18px;
+  border-radius: var(--radius-button);
+  text-decoration: none;
+  font-size: 13.5px;
+  font-weight: 600;
+  margin-top: 6px;
+  transition: background 150ms ease;
+}
+
+.btn-restricted-home:hover {
+  background: #0077ed;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .payment-header-section {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .btn-open-docs-primary {
+    justify-content: center;
+  }
+
+  .embed-frame-wrapper {
+    height: 520px;
+  }
+
+  .docs-link-bar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .btn-copy-link {
+    justify-content: center;
+  }
+}

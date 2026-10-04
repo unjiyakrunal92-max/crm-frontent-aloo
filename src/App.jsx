@@ -12,6 +12,7 @@ import Settings from "./views/Settings";
 import Login from "./views/Login";
 import Register from "./views/Register";
 import Leaves from "./views/Leaves";
+import Payment from "./views/Payment";
 
 
 import API from "./api/api"; // Import the API instance for making requests
@@ -246,6 +247,7 @@ const handleSaveTask = async (savedTask) => {
                       <Route path="/team" element={<Team users={users} />} />
                       <Route path="/holidays" element={<Holidays />} />
                       <Route path="/calendar" element={<Navigate to="/holidays" replace />} />
+                      <Route path="/payment" element={<Payment />} />
                       <Route path="/settings" element={<Settings />} />
                     </Routes>
                   </main>

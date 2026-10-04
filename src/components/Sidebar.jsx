@@ -1,9 +1,13 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { LayoutDashboard, CheckSquare, Users, CalendarDays, CalendarCheck, Settings, Plus, X } from "lucide-react";
+import { LayoutDashboard, CheckSquare, Users, CalendarDays, CalendarCheck, Settings, Plus, X, CreditCard } from "lucide-react";
 import "./Sidebar.css";
 
 export default function Sidebar({ onOpenNewTask, isOpen, onClose }) {
+  const rawUser = localStorage.getItem("user");
+  const user = rawUser ? JSON.parse(rawUser).user || JSON.parse(rawUser) : null;
+  const isAdmin = user?.role?.toLowerCase() === "admin";
+
   return (
     <>
       {/* Mobile Backdrop Overlay */}
@@ -38,6 +42,14 @@ export default function Sidebar({ onOpenNewTask, isOpen, onClose }) {
               <li><NavLink to="/leaves" onClick={onClose} className={({ isActive }) => `nav-item ${isActive ? "active" : ""}`}><CalendarCheck size={18} />Leaves</NavLink></li>
               <li><NavLink to="/team" onClick={onClose} className={({ isActive }) => `nav-item ${isActive ? "active" : ""}`}><Users size={18} />Team</NavLink></li>
               <li><NavLink to="/holidays" onClick={onClose} className={({ isActive }) => `nav-item ${isActive ? "active" : ""}`}><CalendarDays size={18} />Holidays</NavLink></li>
+              {isAdmin && (
+                <li>
+                  <NavLink to="/payment" onClick={onClose} className={({ isActive }) => `nav-item ${isActive ? "active" : ""}`}>
+                    <CreditCard size={18} />
+                    Payment
+                  </NavLink>
+                </li>
+              )}
               <li><NavLink to="/settings" onClick={onClose} className={({ isActive }) => `nav-item ${isActive ? "active" : ""}`}><Settings size={18} />Settings</NavLink></li>
             </ul>
           </nav>

@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Search, Bell, LogOut, Menu, CheckCircle2, MessageSquare, Clock } from "lucide-react";
+import { Search, Bell, LogOut, Menu, CheckCircle2, MessageSquare, Clock, RotateCw } from "lucide-react";
 import "./TopBar.css";
 import API from "../api/api";
 
@@ -12,7 +12,15 @@ export default function TopBar({
 }) {
   const [showNotif, setShowNotif] = useState(false);
   const [notifications, setNotifications] = useState([]);
+  const [isRefreshing, setIsRefreshing] = useState(false);
   const notifRef = useRef(null);
+
+  const handleRefresh = () => {
+    setIsRefreshing(true);
+    setTimeout(() => {
+      window.location.reload();
+    }, 350);
+  };
 
   // Close notifications dropdown when clicking outside
   useEffect(() => {
@@ -92,6 +100,16 @@ export default function TopBar({
       </div>
 
       <div className="topbar-right">
+        {/* Quick Refresh Page & Data Button */}
+        <button
+          type="button"
+          className={`refresh-btn-wrapper ${isRefreshing ? "spinning" : ""}`}
+          onClick={handleRefresh}
+          aria-label="Refresh page and data"
+          title="Refresh Page & Data"
+        >
+          <RotateCw size={18} className={isRefreshing ? "spin-icon" : ""} />
+        </button>
 
         {/* Notification Bell Section with Anchor */}
         <div className="notif-wrapper-anchor" ref={notifRef}>

@@ -791,4 +791,59 @@
   .leave-types-grid {
     grid-template-columns: repeat(2, 1fr);
   }
+
+  /* ============================================================
+     MOBILE ONLY: LIME BACKGROUND FOR ADMIN APPROVED LEAVE DIV
+     ============================================================ */
+  .leave-status-select-wrapper.Approved,
+  .leave-status-select.Approved {
+    background: #ecfccb !important; /* Clean soft lime background */
+    background: rgba(190, 242, 100, 0.38) !important;
+    color: #365314 !important; /* Deep contrast lime text */
+    border: 1px solid #84cc16 !important; /* Polished lime border */
+    box-shadow: 0 2px 8px rgba(132, 204, 22, 0.22);
+  }
+
+  .leave-status-select-wrapper.Approved .leave-status-select-icon {
+    color: #4d7c0f !important;
+  }
+
+  .leave-status-badge.Approved {
+    background: #ecfccb !important;
+    background: rgba(190, 242, 100, 0.38) !important;
+    color: #365314 !important;
+    border: 1px solid #84cc16 !important;
+    box-shadow: 0 2px 8px rgba(132, 204, 22, 0.2);
+  }
+
+  .status-dot.Approved {
+    background: #65a30d !important;
+  }
+
+  /* Highlight entire row with subtle lime tint on mobile */
+  tr.status-approved td {
+    background: rgba(236, 252, 203, 0.3) !important;
+  }
+
+  .mobile-admin-approval-banner {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #ecfccb;
+    background: rgba(190, 242, 100, 0.38);
+    border: 1px solid #84cc16;
+    color: #365314;
+    padding: 12px 16px;
+    border-radius: var(--radius-card);
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 16px;
+    box-shadow: 0 4px 14px rgba(132, 204, 22, 0.2);
+    animation: fadeIn 200ms ease;
+  }
+
+  .mobile-admin-approval-banner .approval-banner-icon {
+    color: #65a30d;
+    flex-shrink: 0;
+  }
 }

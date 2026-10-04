@@ -29,6 +29,7 @@ export default function Leaves() {
   const [searchQuery, setSearchQuery] = useState("");
   const [statusFilter, setStatusFilter] = useState("All");
   const [typeFilter, setTypeFilter] = useState("All");
+  const [approvalToast, setApprovalToast] = useState(null);
 
   const rawUser = localStorage.getItem("user");
   const user = rawUser ? JSON.parse(rawUser).user || JSON.parse(rawUser) : null;
@@ -117,6 +118,11 @@ export default function Leaves() {
           : leave
       )
     );
+
+    if (targetStatus === "Approved") {
+      setApprovalToast("Leave approved successfully by admin!");
+      setTimeout(() => setApprovalToast(null), 4000);
+    }
   } catch (error) {
     console.error("Error updating leave status:", error);
   }
@@ -372,6 +378,14 @@ export default function Leaves() {
         </div>
       </div>
 
+      {/* Mobile Admin Approval Toast Banner */}
+      {approvalToast && (
+        <div className="mobile-admin-approval-banner">
+          <CheckCircle2 size={18} className="approval-banner-icon" />
+          <span>{approvalToast}</span>
+        </div>
+      )}
+
       {/* Leave Applications Table */}
       {error ? (
         <FetchErrorState 
@@ -409,8 +423,9 @@ export default function Leaves() {
               <tbody>
                 {filteredLeaves.map((item) => {
                   const days = getDaysCount(item.startDate, item.endDate);
+                  const isApproved = item.status === "Approved";
                   return (
-                    <tr key={item._id}>
+                    <tr key={item._id} className={`leave-table-row ${isApproved ? "status-approved" : ""}`}>
                       <td>
                         {renderLeaveTypeBadge(item.Leavetype)}
                       </td>
@@ -436,7 +451,7 @@ export default function Leaves() {
                       </td>
                       <td>
                         {isAdmin ? (
-                          <div className="leave-status-select-wrapper">
+                          <div className={`leave-status-select-wrapper ${item.status}`}>
                             <select
                               className={`leave-status-select ${item.status}`}
                               value={item.status}
