@@ -17,7 +17,7 @@ export default function Sidebar({ onOpenNewTask, isOpen, onClose }) {
           <div className="logo-section">
             <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
               <div className="logo-icon"><CheckSquare size={16} /></div>
-              <span className="logo-text">Infividhya TaskFlow</span>
+              <span className="logo-text">ALOO SMP TASK MANAGER</span>
             </div>
 
             {/* Mobile Close Button */}

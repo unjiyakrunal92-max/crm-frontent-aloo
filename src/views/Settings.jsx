@@ -41,7 +41,7 @@ export default function Settings() {
 
         {/* Subtitle Description */}
         <p className="settings-subtext">
-          We are crafting an all-in-one configuration center for <strong>Infividhya TaskFlow</strong>. Soon you'll be able to manage your workspace settings, notification preferences, themes, and integrations.
+          We are crafting an all-in-one configuration center for <strong>ALOO SMP TASK MANAGER</strong>. Soon you'll be able to manage your workspace settings, notification preferences, themes, and integrations.
         </p>
 
         {/* Planned Features Preview */}

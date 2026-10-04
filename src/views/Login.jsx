@@ -53,7 +53,7 @@ export default function Login({ onAuthSuccess }) {
         {/* LEFT DECORATIVE GRAPHIC PANEL */}
         <div className="auth-hero-side">
           <div className="hero-header-nav">
-            <span className="hero-brand-logo">CRM INFIVIDHYA</span>
+            <span className="hero-brand-logo">ALOO SMP TASK MANAGER</span>
             <button className="btn-hero-back" onClick={() => navigate("/tasks")}>
               <span>Back to application</span>
               <ArrowRight size={14} />
@@ -61,7 +61,7 @@ export default function Login({ onAuthSuccess }) {
           </div>
           
           <div className="hero-caption-block">
-            <h2 className="hero-caption-title">Welcome Back to<br />Infividhy CRM</h2>
+            <h2 className="hero-caption-title">Welcome Back to<br />ALOO SMP TASK MANAGER</h2>
             <div className="hero-carousel-indicators">
               <div className="carousel-dot active" />
               <div className="carousel-dot" />

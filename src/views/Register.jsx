@@ -54,7 +54,7 @@ export default function Register() {
         {/* LEFT DECORATIVE GRAPHIC PANEL */}
         <div className="auth-hero-side">
           <div className="hero-header-nav">
-            <span className="hero-brand-logo">CRM INFIVIDHYA</span>
+            <span className="hero-brand-logo">ALOO SMP TASK MANAGER</span>
             {/* UPDATED: Redirects straight back to the login page */}
             <button className="btn-hero-back" onClick={() => navigate("/login")}>
               <LogIn size={14} />

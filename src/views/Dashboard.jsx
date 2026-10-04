@@ -64,7 +64,7 @@ export default function Dashboard() {
             <span>Workspace Overview</span>
           </div>
           <h1 className="dashboard-hero-title">
-            Welcome to Infividhya TaskFlow, {firstName}!
+            Welcome to ALOO SMP TASK MANAGER, {firstName}!
           </h1>
           <p className="dashboard-hero-subtitle">
             Your centralized workspace to track agile sprint tasks, coordinate team time-offs, view holiday calendars, and manage team members.
