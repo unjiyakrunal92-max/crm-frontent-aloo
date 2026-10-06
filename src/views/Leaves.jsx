@@ -163,9 +163,13 @@ export default function Leaves() {
 
   // Filter leaves based on search & filter controls
   const filteredLeaves = leaves.filter((l) => {
+    const applicantName = l.user?.firstName 
+      ? `${l.user.firstName} ${l.user.lastName || ""} ${l.user.email || ""}`
+      : (typeof l.user === "string" ? l.user : "");
     const matchesSearch = 
       l.Reason.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      l.Leavetype.toLowerCase().includes(searchQuery.toLowerCase());
+      l.Leavetype.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      applicantName.toLowerCase().includes(searchQuery.toLowerCase());
     const matchesStatus = statusFilter === "All" || l.status === statusFilter;
     const matchesType = typeFilter === "All" || l.Leavetype === typeFilter;
     return matchesSearch && matchesStatus && matchesType;
@@ -340,7 +344,7 @@ export default function Leaves() {
             <Search className="leaves-search-icon" />
             <input
               type="text"
-              placeholder="Search by reason or type..."
+              placeholder="Search by employee name, reason, or type..."
               className="leaves-search-input"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
@@ -412,6 +416,7 @@ export default function Leaves() {
             <table className="leaves-table">
               <thead>
                 <tr>
+                  {isAdmin && <th>Employee</th>}
                   <th>Leave Type</th>
                   <th>Dates & Duration</th>
                   <th>Reason</th>
@@ -424,10 +429,38 @@ export default function Leaves() {
                 {filteredLeaves.map((item) => {
                   const days = getDaysCount(item.startDate, item.endDate);
                   const isApproved = item.status === "Approved";
+                  const applicantName = item.user?.firstName 
+                    ? `${item.user.firstName} ${item.user.lastName || ""}`.trim()
+                    : (item.user?.email || "Team Member");
+                  const applicantInitials = item.user?.firstName
+                    ? `${item.user.firstName[0]}${item.user.lastName?.[0] || ""}`.toUpperCase()
+                    : "TM";
+                  const applicantEmail = item.user?.email || "";
+
                   return (
                     <tr key={item._id} className={`leave-table-row ${isApproved ? "status-approved" : ""}`}>
+                      {isAdmin && (
+                        <td>
+                          <div className="applicant-cell">
+                            <div className="applicant-avatar" title={applicantName}>
+                              {applicantInitials}
+                            </div>
+                            <div className="applicant-details">
+                              <span className="applicant-name">{applicantName}</span>
+                              {applicantEmail && (
+                                <span className="applicant-email">{applicantEmail}</span>
+                              )}
+                            </div>
+                          </div>
+                        </td>
+                      )}
                       <td>
                         {renderLeaveTypeBadge(item.Leavetype)}
+                        {isAdmin && (
+                          <div className="applicant-mobile-subtag">
+                            <span>{applicantName}</span>
+                          </div>
+                        )}
                       </td>
                       <td>
                         <div className="date-cell-wrapper">
